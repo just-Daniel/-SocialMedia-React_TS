@@ -66,3 +66,9 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+
+# My notes
+
+### `npm i react-router-dom -save` &nbsp; 	&ndash; &nbsp; For working with the routers (`-save` &nbsp; add info in the dependencies list)

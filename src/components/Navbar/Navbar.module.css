@@ -1,0 +1,52 @@
+.nav {
+  grid-area: nav;
+  background-color: #2c3131;
+}
+
+.sidebarLinks {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.sidebarLinks a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 36px;
+  margin: auto 25px;
+  line-height: 50px;
+}
+
+.sidebarLinks a.active {
+  color: #abcdef;
+}
+
+.info {
+  margin-top: 50px;
+}
+
+.infoTitle {
+  color: #fff;
+  font-size: 46px;
+  margin-left: 25px;
+  margin-bottom: 10px;
+}
+
+.infoContent {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+.contentImg img{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 5px;
+}
+
+.contentName {
+  color: #fff;
+  transform: translateX(8px);
+}

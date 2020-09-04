@@ -1,0 +1,35 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+
+.dialogs_items {
+    padding: 10px;
+}
+
+.messages {
+    padding: 10px;
+}
+
+.item a{
+    text-decoration: none;
+    color: #2c3131;
+    font-size: 25px;
+}
+.item a:active {
+    color: #5f2f2f;
+    font-size: 25.1px;
+}
+.item a.active {
+    color: #abcdef;
+}
+
+.item img {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+    transform: translateY(5px);
+}
+
