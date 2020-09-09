@@ -7,7 +7,7 @@ const DialogItem = (props) => {
 
   return (
     <div className={s.item}>
-      <img src="https://lh3.googleusercontent.com/proxy/3uiyVU21e2bkeDXQX9peU24xiYqe4gmnb5HHpsCSHHiDN4i1hSmMoyxwDNNksxMx_hpWpc_d1ZU1MVMFgNqqEafbnKRHwqj6Trbv9X66oj88sg9orVQ4_v9uoPrsvCpXftk_ObJkhQPxnoCuqhd6eo9uwJ_mk5MKsHSSRh0NIfvyDKrZgcEtXZc" alt=""/>
+      <img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt=""/>
       <NavLink to={ path }>{ props.name }</NavLink>
     </div>
   )
