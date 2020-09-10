@@ -27,7 +27,7 @@ let store = {
                 {id: 2, message: 'hi Bro'},
                 {id: 3, message: 'glad to see you here'},
             ],
-            newMessage: 'write here'
+            newMessage: ''
         },
         sidebar: {
             sidebarLink: [
