@@ -16,8 +16,7 @@
 
     
 
-
-
+/* DialogsItem */
 .item a{
     text-decoration: none;
     color: #2c3131;
@@ -28,7 +27,7 @@
     font-size: 25.1px;
 }
 .item a.active {
-    color: #abcdef;
+    color: #009999;
 }
 
 .item img {
