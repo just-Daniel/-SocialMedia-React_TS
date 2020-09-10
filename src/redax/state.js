@@ -27,7 +27,7 @@ let store = {
                 {id: 2, message: 'hi Bro'},
                 {id: 3, message: 'glad to see you here'},
             ],
-            newMessage: 'write here'
+            newMessageText: ''
         },
         sidebar: {
             sidebarLink: [
@@ -75,13 +75,13 @@ let store = {
         } else if (action.type === 'ADD-MESSAGE') {
             let item = {
                 id: 4,
-                message: this._state.dialogPage.newMessage
+                message: this._state.dialogPage.newMessageText
              }
               this._state.dialogPage.messagesData.push(item);
               this._callSubscriber(store.getState());
-              this._state.dialogPage.newMessage = '';
+              this._state.dialogPage.newMessageText = '';
         } else if (action.type === 'UPDATE-NEW-POST-TEXT-MESSAGE') {
-            this._state.dialogPage.newMessage = action.newText
+            this._state.dialogPage.newMessageText = action.newText
             this._callSubscriber(this.getState());
         }
     }
