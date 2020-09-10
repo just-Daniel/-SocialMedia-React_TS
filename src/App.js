@@ -20,7 +20,8 @@ function App(props) {
             /> } 
           />
           <Route path='/dialogs' render={ () => <Dialogs 
-            state={props.state.dialogPage} 
+            dialogPage={props.state.dialogPage} 
+            dispatch={ props.dispatch }
           /> } 
           />
           <Route path='/news' />

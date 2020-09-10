@@ -1,5 +1,7 @@
 const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT_ACTION_CREATOR = 'UPDATE-NEW-POST-TEXT';
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const ADD_MESSAGE = 'ADD-MESSAGE';
+const UPDATE_NEW_TEXT_MESSAGE = 'UPDATE-NEW-POST-TEXT-MESSAGE';
 
 let store = {
     _state : {
@@ -24,7 +26,8 @@ let store = {
                 {id: 1, message: 'hi'},
                 {id: 2, message: 'hi Bro'},
                 {id: 3, message: 'glad to see you here'},
-            ]
+            ],
+            newMessage: 'write here'
         },
         sidebar: {
             sidebarLink: [
@@ -69,18 +72,40 @@ let store = {
         } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
             this._state.profilePage.newPostText = action.newText;
             this._callSubscriber(this._state);
+        } else if (action.type === 'ADD-MESSAGE') {
+            let item = {
+                id: 4,
+                message: this._state.dialogPage.newMessage
+             }
+              this._state.dialogPage.messagesData.push(item);
+              this._callSubscriber(store.getState());
+              this._state.dialogPage.newMessage = '';
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT-MESSAGE') {
+            this._state.dialogPage.newMessage = action.newText
+            this._callSubscriber(this.getState());
         }
     }
 };
 
+//  POST
 export const addPostActionCreator = () => ( {type: ADD_POST} );
   
 export const updateNewPostTextActionCreator = (text) => (
     {
-      type: UPDATE_NEW_POST_TEXT_ACTION_CREATOR,
+      type: UPDATE_NEW_POST_TEXT,
       newText: text
     }
 );
+
+//  MESSAGE
+export const addMessageActionCreator = () => ( {type: ADD_MESSAGE} );
+
+export const updateMessageActionCreator = (text) => (
+    {
+        type: UPDATE_NEW_TEXT_MESSAGE,
+        newText: text
+    }
+)
   
 
 window.store = store;

@@ -2,20 +2,30 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
+import {addMessageActionCreator, updateMessageActionCreator } from '../../redax/state';
 
 const Dialogs = (props) => {
+  console.log(props);
 
-  let dialogElement = props.state.dialogsData
+  let dialogElement = props.dialogPage.dialogsData
       .map(i => <DialogItem name={i.name} id={i.id} />);
 
-  let messageElement = props.state.messagesData
+  let messageElement = props.dialogPage.messagesData
       .map(i => <Message message={i.message} />)
 
    let newMessageElement = React.createRef();
+   
+
    let addMessage = () => {
-     let text = newMessageElement.current.value;
-     alert(text);
+    //  addMessageInState();
+    props.dispatch(addMessageActionCreator())
    }
+
+   const onMessageChange = () => {
+    let text = newMessageElement.current.value;
+    props.dispatch(updateMessageActionCreator(text))
+    // updateMessageInState(newText);
+   };
 
     return (
        <div className={s.dialogs}>
@@ -30,7 +40,10 @@ const Dialogs = (props) => {
 
           <div className={s.createMessage}>
             <div>
-              <textarea ref={ newMessageElement }></textarea>
+              <textarea ref={ newMessageElement }
+                        value={ props.dialogPage.newMessage}
+                        onChange={ onMessageChange }
+              />
             </div>
             <div>
               <button onClick={ addMessage }>Add</button>
