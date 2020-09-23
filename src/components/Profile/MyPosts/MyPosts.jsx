@@ -1,27 +1,20 @@
 import React from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
-import { addPostActionCreator, updateNewPostTextActionCreator } from '../../../redax/profile-reducer';
 
 const MyPosts = (props) => {
+  console.log('myPosts props: ', props);
   let postElement = props.postData
     .map(i => <Post messages={ i.message } totalLike={ i.totalLike } />);
   // React.createRef() - create link 
   let newPostElement = React.createRef();
 
-  let addPost = () => {
-    // let item = {type: 'ADD-POST'};
-    props.dispatch(addPostActionCreator());
+  let onAddPost = () => {
+    props.addPost();
   }
-
   let onPostChange = () => {
     let text = newPostElement.current.value;
-    // let item = {
-    //   type: 'UPDATE-NEW-POST-TEXT',
-    //   newText: text
-    // };
-    let action = updateNewPostTextActionCreator(text)
-    props.dispatch(action);
+    props.updateNewPostText(text)
   }
 
     return (
@@ -36,7 +29,7 @@ const MyPosts = (props) => {
                         value={ props.newPostText } />
             </div>
             <div>
-              <button onClick={ addPost }>Add</button>
+              <button onClick={ onAddPost }>Add</button>
             </div>
           </div>
 
