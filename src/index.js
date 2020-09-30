@@ -4,15 +4,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import StoreContext from './StoreContext';
 
 let rerenderEntireTree = (state) => {
-  debugger
   ReactDOM.render(
     <React.StrictMode>
-      <App  state={ state } 
-            dispatch={ store.dispatch.bind(store) }
-            store={ store }
-      />
+      <StoreContext.Provider value={ store } >
+        <App state={ state }/>
+      </StoreContext.Provider>
     </React.StrictMode>,
     document.getElementById('root')
   ); 
@@ -24,7 +23,7 @@ rerenderEntireTree(store.getState());
 // Якщо відбуваються якісь зміни то викликається ця функція
 // store.subscribe(rerenderEntireTree);
 store.subscribe(() => {
-  // отримуєсо нові данні зі стора 
+  // отримуємо нові данні зі стора 
   let state = store.getState();
   rerenderEntireTree(state);
 });
