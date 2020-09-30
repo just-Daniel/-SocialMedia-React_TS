@@ -4,14 +4,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import StoreContext from './StoreContext';
+import StoreContext, { Provider } from './StoreContext';
 
 let rerenderEntireTree = (state) => {
   ReactDOM.render(
     <React.StrictMode>
-      <StoreContext.Provider value={ store } >
+      {/* <StoreContext.Provider value={ store } > */}
+        <Provider store={ store }>
         <App state={ state }/>
-      </StoreContext.Provider>
+        </Provider>
+      {/* </StoreContext.Provider> */}
     </React.StrictMode>,
     document.getElementById('root')
   ); 
