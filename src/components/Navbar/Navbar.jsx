@@ -3,7 +3,6 @@ import s from './Navbar.module.css';
 import { NavLink } from 'react-router-dom';
 
 const Navbar = (props) => {
-  debugger;
   let linkElement = props.state.sidebarLink
     .map(i =>  <NavLink to={ i.link } activeClassName={s.active}>{ i.name }</NavLink>);
 
