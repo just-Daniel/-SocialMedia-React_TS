@@ -22,20 +22,38 @@ const profileReducer = (state = initialState, action) => {
             // state.postData.push(newPost);
             // state.newPostText = '';
             // return state;
-            let stateCopy = {...state};
-            stateCopy.postData = [...state.postData];
 
-            stateCopy.postData.push(newPost);
-            stateCopy.newPostText = '';
-            return stateCopy;
+
+
+            // let stateCopy = {...state};
+            // stateCopy.postData = [...state.postData];
+
+            // stateCopy.postData.push(newPost);
+            // stateCopy.newPostText = '';
+            // return stateCopy;
+ 
+            return {
+                ...state,
+                postData: [...state.postData, newPost],
+                newPostText: ''
+            }
+
         }
         case 'UPDATE-NEW-POST-TEXT': {
             // state.newPostText = action.newText;
             // return state;
-            let stateCopy = {...state};
 
-            stateCopy.newPostText = action.newText;
-            return stateCopy;
+
+            // let stateCopy = {...state};
+
+            // stateCopy.newPostText = action.newText;
+            // return stateCopy;
+
+
+            return {
+                ...state,
+                newPostText: action.newText
+            }
         }
         default: 
             return state;

@@ -28,20 +28,35 @@ const dialogReducer = (state = initialState, action) => {
             //   state.messagesData.push(item);
             //   state.newMessageText = '';
             //   return state;
-            let stateCopy = {...state};
-             stateCopy.messagesData = [...state.messagesData];
 
-            stateCopy.messagesData.push(item);
-            stateCopy.newMessageText = '';
-            return stateCopy;
+
+            // let stateCopy = {...state};
+            //  stateCopy.messagesData = [...state.messagesData];
+
+            // stateCopy.messagesData.push(item);
+            // stateCopy.newMessageText = '';
+            // return stateCopy;
+
+            return {
+                ...state,
+                messagesData: [...state.messagesData, item],
+                newMessageText: ''
+            };
 
         }
         case 'UPDATE-NEW-POST-TEXT-MESSAGE': {
             // state.newMessageText = action.newText;
             // return state;
-            let stateCopy = {...state};
-            stateCopy.newMessageText = action.newText;
-            return stateCopy;
+
+
+            // let stateCopy = {...state};
+            // stateCopy.newMessageText = action.newText;
+            // return stateCopy;
+
+            return {
+                ...state,
+                newMessageText: action.newText
+            };
         }
         default: 
              return state;
