@@ -4,10 +4,10 @@ import { NavLink } from 'react-router-dom';
 
 const Navbar = (props) => {
   let linkElement = props.state.sidebarLink
-    .map(i =>  <NavLink to={ i.link } activeClassName={s.active}>{ i.name }</NavLink>);
+    .map(i =>  <NavLink to={ i.link } activeClassName={s.active} key={i.id}>{ i.name }</NavLink>);
 
   let infoElement = props.state.info.content.map(i =>  
-    <div>
+    <div key={i.id}>
       <div className={s.contentImg}>
         <img src={i.img} alt="friend"/>
       </div>
