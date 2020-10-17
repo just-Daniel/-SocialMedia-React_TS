@@ -72,3 +72,5 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 # My notes
 
 ### `npm i react-router-dom -save` &nbsp; 	&ndash; &nbsp; For working with the routers (`-save` &nbsp; add info in the dependencies list)
+
+# For queries to server npm install axios --save

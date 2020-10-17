@@ -54,9 +54,8 @@ const dialogReducer = (state = initialState, action) => {
             // return stateCopy;
 
             return {
-                // ...state,
+                ...state,
                 newMessageText: action.newText,
-                ...state
             };
         }
         default: 
