@@ -2,9 +2,10 @@ const initialState = {
     sidebarLink: [
         {id: 0, name: 'Profile', link: '/profile'},
         {id: 1, name: 'Messages', link: '/dialogs'},
-        {id: 2, name: 'News', link: '/news'},
-        {id: 3, name: 'Music', link: '/music'},
-        {id: 4, name: 'Setting', link: '/setting'}
+        {id: 2, name: 'Users', link: '/users'},
+        {id: 3, name: 'News', link: '/news'},
+        {id: 4, name: 'Music', link: '/music'},
+        {id: 5, name: 'Setting', link: '/setting'}
     ],
     info: {
         title: {id: 0, name: 'Friends'},
