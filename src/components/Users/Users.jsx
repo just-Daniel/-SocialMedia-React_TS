@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './style.module.css'
 import * as axios from 'axios';
-import userPhoto from '../../assets/user2.png'
+import userPhoto from '../../assets/user.png'
 
 class Users extends React.Component {
     constructor(props) {
@@ -13,7 +13,7 @@ class Users extends React.Component {
     } 
     render() {
         return (
-            <div>
+            <div className={style.container}>
                 {
                     this.props.users.map(u => <div key={ u.id }>
                         <span>
@@ -23,10 +23,10 @@ class Users extends React.Component {
                         <div>
                             {
                                 u.followed 
-                                ? <button onClick={ ()=> {
+                                ? <button className={`${style.btn_unfollow} ${style.btn}`} onClick={ ()=> {
                                     this.props.unfollow(u.id)
                                 }}>Unfollow</button>
-                                : <button onClick={ ()=> {
+                                : <button className={`${style.btn_follow} ${style.btn}`} onClick={ ()=> {
                                     this.props.follow(u.id)
                                 }}>Follow</button>
                             }
