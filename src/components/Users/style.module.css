@@ -1,27 +1,32 @@
 .container {
-    margin-left: 20px;
+  margin-left: 20px;
 }
 
 .userPhoto {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-left: 10px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-left: 10px;
 }
 
 .btn {
-    background-color: #fff;
-    color: #000;
-    border: none;
-    font-size: 16px;
-    padding: 2px 10px;
-    border-radius: 4px;
-    transition-duration: 0.3s;
+  background-color: #fff;
+  color: #000;
+  border: none;
+  font-size: 16px;
+  padding: 2px 10px;
+  border-radius: 4px;
+  transition-duration: 0.3s;
+  outline: none;
 }
 .btn_unfollow:hover {
-    background-color: #dfb2b2;
+  background-color: #dfb2b2;
 }
 .btn_follow:hover {
-    background-color: #b6d1b4;
+  background-color: #b6d1b4;
+}
+
+.selectedPage {
+  font-weight: bold;
 }
