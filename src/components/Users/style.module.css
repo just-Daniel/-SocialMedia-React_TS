@@ -20,8 +20,14 @@
   transition-duration: 0.3s;
   outline: none;
 }
+.btn_unfollow {
+  background-color: #e0cfcf;
+}
 .btn_unfollow:hover {
   background-color: #dfb2b2;
+}
+.btn_follow {
+  background-color: #d7ddd5;
 }
 .btn_follow:hover {
   background-color: #b6d1b4;

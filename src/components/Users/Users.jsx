@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './style.module.css'
 import userPhoto from '../../assets/user.png'
+import { NavLink } from 'react-router-dom';
 
 export const Users = props => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize / 250);
@@ -19,6 +20,7 @@ export const Users = props => {
                             key={p}
                             className={props.currentPage === p && style.selectedPage}
                             onClick={() => props.onPageChanged(p)}
+                            style={{'cursor': 'pointer'}}
                         >{p}</span>
                     }) 
                 }
@@ -27,7 +29,9 @@ export const Users = props => {
                 props.users.map(u => <div key={ u.id }>
                     <span>
                     <div>
-                        <img src={u.photos.small != null ? u.photos.small : userPhoto} className={style.userPhoto} alt='man'/>
+                        <NavLink to={'/profile/' + u.id}>
+                            <img src={u.photos.small != null ? u.photos.small : userPhoto} className={style.userPhoto} alt='man'/>
+                        </NavLink>
                     </div>
                     <div>
                         {
