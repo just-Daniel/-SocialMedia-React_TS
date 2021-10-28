@@ -15,7 +15,8 @@ function App(props) {
         <Navbar state={props.state.sidebar} />
 
         <div className="app-wrapper-content">
-          <Route path='/profile' render={ () => <ProfileContainer /> } />
+          {/*  : вказуєм параметр, ? говоримо, що він не обов'язковий */}
+          <Route path='/profile/:userId?' render={ () => <ProfileContainer /> } />
           <Route path='/dialogs' render={ () => <DialogsContainer /> } />
           <Route path='/news' />
           <Route path='/music' />
