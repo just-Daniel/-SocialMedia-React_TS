@@ -18,7 +18,7 @@ export const Users = props => {
                     pages.map(p => {
                         return <span
                             key={p}
-                            className={props.currentPage === p && style.selectedPage}
+                            className={props.currentPage === p ? style.selectedPage : ''}
                             onClick={() => props.onPageChanged(p)}
                             style={{'cursor': 'pointer'}}
                         >{p}</span>

@@ -3,7 +3,6 @@ import s from './MyPosts.module.css';
 import Post from './Post/Post';
 
 const MyPosts = (props) => {
-  console.log('myPosts props: ', props);
   let postElement = props.postData
     .map(i => <Post messages={ i.message } totalLike={ i.totalLike } key={i.id} />);
   // React.createRef() - create link 
