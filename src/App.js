@@ -6,6 +6,7 @@ import ProfileContainer from './components/Profile/ProfileContainer';
 import { Route, BrowserRouter } from 'react-router-dom';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import UsersContainer from './components/Users/UsersContainer';
+import LoginContainer from './components/Login/Login';
 
 function App(props) {
   return (
@@ -22,6 +23,7 @@ function App(props) {
           <Route path='/music' />
           <Route path='/setting' />
           <Route path='/users' render={ ()=> <UsersContainer /> } />
+          <Route path='/login' render={ () => <LoginContainer /> } />
         </div>
         
       </div>
