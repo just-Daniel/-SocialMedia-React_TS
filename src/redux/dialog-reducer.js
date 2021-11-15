@@ -1,5 +1,4 @@
 const ADD_MESSAGE = 'ADD-MESSAGE';
-const UPDATE_NEW_TEXT_MESSAGE = 'UPDATE-NEW-POST-TEXT-MESSAGE';
 
 const initialState = {
     dialogsData : [
@@ -23,53 +22,20 @@ const dialogReducer = (state = initialState, action) => {
         case 'ADD-MESSAGE': {
             let item = {
                 id: 4,
-                message: state.newMessageText
+                message: action.newMessage
              }
-            //   state.messagesData.push(item);
-            //   state.newMessageText = '';
-            //   return state;
-
-
-            // let stateCopy = {...state};
-            //  stateCopy.messagesData = [...state.messagesData];
-
-            // stateCopy.messagesData.push(item);
-            // stateCopy.newMessageText = '';
-            // return stateCopy;
 
             return {
                 ...state,
-                messagesData: [...state.messagesData, item],
-                newMessageText: ''
-            };
-
-        }
-        case 'UPDATE-NEW-POST-TEXT-MESSAGE': {
-            // state.newMessageText = action.newText;
-            // return state;
-
-
-            // let stateCopy = {...state};
-            // stateCopy.newMessageText = action.newText;
-            // return stateCopy;
-
-            return {
-                ...state,
-                newMessageText: action.newText,
+                messagesData: [...state.messagesData, item]
             };
         }
+        
         default: 
              return state;
     }
 };
 
-export const addMessageActionCreator = () => ( {type: ADD_MESSAGE} );
-
-export const updateMessageActionCreator = (text) => (
-    {
-        type: UPDATE_NEW_TEXT_MESSAGE,
-        newText: text
-    }
-)
+export const addMessageActionCreator = (newMessage) => ({ type: ADD_MESSAGE, newMessage });
 
 export default dialogReducer;

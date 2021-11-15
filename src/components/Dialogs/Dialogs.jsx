@@ -2,6 +2,11 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
+import { Field, reduxForm } from 'redux-form';
+import { Textarea } from '../common/FormControls/FormControls';
+import { maxLengthCreator, required } from '../../utils/validators/validators';
+
+const maxLength50 = maxLengthCreator(50)
 
 const Dialogs = (props) => {
   let dialogElement = props.dialogsPage.dialogsData
@@ -11,14 +16,9 @@ const Dialogs = (props) => {
       .map(i => <Message message={i.message} key={i.id} />);
 
 
-   let onAddMessage = () => {
-    props.addMessage();
+   let onAddMessage = value => {
+    props.sendMessage(value.newMessageBody);
    }
-
-   const onMessageChange = (element) => {
-    let text = element.target.value;
-    props.changeMessage(text)
-   };
 
 
     return (
@@ -32,18 +32,7 @@ const Dialogs = (props) => {
             { messageElement }
           </div>
 
-          <div className={s.createMessage}>
-            <div>
-              <textarea 
-                        value={ props.dialogsPage.newMessageText }
-                        onChange={ onMessageChange }
-                        placeholder='Enter your message'
-              />
-            </div>
-            <div>
-              <button onClick={ onAddMessage }>Send</button>
-            </div>
-          </div>
+          <AddMessageForm onSubmit={onAddMessage} />
 
         </div> 
 
@@ -51,5 +40,26 @@ const Dialogs = (props) => {
       </div>
     )
 }
+
+let AddMessageForm = props => {
+  return (
+    <form onSubmit={props.handleSubmit} className={s.createMessage}>
+      <div>
+        <Field 
+          component={ Textarea }
+          name='newMessageBody'
+          placeholder='Enter your message'
+          validate={[required, maxLength50]}
+        />
+      </div>
+      <div>
+        <button>Send</button>
+      </div>
+    </form>
+  )
+}
+
+AddMessageForm = reduxForm({form: 'dialogsAddMessageForm'})(AddMessageForm)
+
 
 export default Dialogs;
