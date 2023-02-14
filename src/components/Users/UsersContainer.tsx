@@ -1,16 +1,34 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import { followAC, followUsers, toggleIsFollowingProgressAC, unfollowAC, unfollowUsers, getUsersThunkCreator } from '../../redux/users-reducer';
+import { followUsers, unfollowUsers, getUsersThunkCreator } from '../../redux/users-reducer';
 import { Users } from './Users'
 import Preloader from '../common/Preloader/Preloader.jsx';
 import { getCurrentPage, getFollowingInProgress, getIsFetching, getPageSize, getTotalUsersCount, getUsers } from '../../redux/users-selector';
+import { UserType } from '../../Types/types';
+import { AppStateType } from '../../redux/redux-store';
 
-class UsersContainer extends React.Component {
+type MapStatePropsType = {
+    currentPage: number
+    pageSize: number
+    isFetching: boolean
+    totalUsersCount: number
+    users: Array<UserType>
+    followingInProgress: Array<number>
+}
+type MapDispatchPropsType = {
+    getUsers: (currentPage: number, pageSize: number) => void
+    followUsers: (userId: number) => void
+    unfollowUsers: (userId: number) => void
+}
+
+type PropsType = MapStatePropsType & MapDispatchPropsType;
+
+class UsersContainer extends React.Component<PropsType> {
     componentDidMount() {
         this.props.getUsers(this.props.currentPage, this.props.pageSize);
     }
 
-    onPageChanged = (pageNumber) => {
+    onPageChanged = (pageNumber: number) => {
         this.props.getUsers(pageNumber, this.props.pageSize);
     }
 
@@ -25,8 +43,6 @@ class UsersContainer extends React.Component {
                 currentPage={ this.props.currentPage }
                 onPageChanged={ this.onPageChanged }
                 users={ this.props.users }
-                unfollow={ this.props.unfollow }
-                follow={ this.props.follow }
                 followingInProgress={ this.props.followingInProgress  }
                 followUsers={ this.props.followUsers }
                 unfollowUsers={ this.props.unfollowUsers }
@@ -35,7 +51,7 @@ class UsersContainer extends React.Component {
     }
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: AppStateType) => {
     return {
         users: getUsers(state),
         pageSize: getPageSize(state),
@@ -71,9 +87,6 @@ const mapStateToProps = (state) => {
 //  ---  OR ---
 
 const mapDispatchToProps = {
-    follow: followAC,
-    unfollow: unfollowAC,
-    toggleIsFollowingProgress: toggleIsFollowingProgressAC,
     getUsers: getUsersThunkCreator,
     followUsers,
     unfollowUsers

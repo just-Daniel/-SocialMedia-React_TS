@@ -1,4 +1,5 @@
-import * as axios from 'axios';
+import axios from 'axios';
+import { ProfileType } from '../Types/types';
 
 const instance = axios.create({
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
@@ -12,30 +13,29 @@ export const usersAPI =  {
     getUsers (currentPage = 1, pageSize = 10) {
         return instance.get(`users?page=${currentPage}&count=${pageSize}`).then(res => res.data)
     },
-    follow (id) {
+    follow (id: number) {
         return instance.post(`follow/${id}`).then(res => res.data)
     },
-    unfollow (id) {
+    unfollow (id: number) {
         return instance.delete(`follow/${id}`).then(res => res.data)
     },
-    getUserProfile (userId) {
+    getUserProfile (userId: number) {
         console.warn('Obsolete method. Please use profileAPI object')
         return profileAPI.getUserProfile(userId)
     }
-    
 }
 
 export const profileAPI =  {
-    getUserProfile (userId) {
+    getUserProfile (userId: number) {
         return instance.get(`profile/${userId}`)
     },
-    getUserStatus (userId) {
+    getUserStatus (userId: number) {
         return instance.get(`profile/status/${userId}`)
     },
-    updateUserStatus (status) {
+    updateUserStatus (status: string) {
         return instance.put(`profile/status`, {status})
     },
-    savePhoto (photoFile) {
+    savePhoto (photoFile: any) {
         const formData = new FormData();
         formData.append('image', photoFile);
 
@@ -45,17 +45,36 @@ export const profileAPI =  {
             }
         })
     },
-    saveProfile (profile) {
+    saveProfile (profile: ProfileType) {
         return instance.put(`profile`, profile)
     }
 }
 
+export enum ResultCodesEnum {
+    Success = 0,
+    Error = 1,
+    CaptchaIsRequired = 10
+}
+
+type AuthAPITypes = {
+    data: { id: number, email: string, login: string }
+    resultCode: ResultCodesEnum
+    messages: Array<string>
+}
+
+type LoginAPITypes = {
+    data: { userId: number }
+    resultCode: ResultCodesEnum
+    messages: Array<string>
+}
+
 export const authAPI = {
     auth () {
-        return instance.get('auth/me')
+        return instance.get<AuthAPITypes>('auth/me').then(res => res.data)
     },
-    login (email, password, rememberMe = false, captcha =  null) {
-        return instance.post('auth/login', {email, password, rememberMe, captcha})
+    login (email: string, password: string, rememberMe = false, captcha: null | string =  null) {
+        return instance.post<LoginAPITypes>('auth/login', {email, password, rememberMe, captcha})
+            .then(res => res.data);
     },
     logout () {
         return instance.delete('auth/login')
