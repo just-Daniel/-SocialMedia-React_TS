@@ -52,7 +52,9 @@ export const profileAPI =  {
 
 export enum ResultCodesEnum {
     Success = 0,
-    Error = 1,
+    Error = 1
+}
+export enum ResultCodesForCaptchaEnum {
     CaptchaIsRequired = 10
 }
 
@@ -64,7 +66,7 @@ type AuthAPITypes = {
 
 type LoginAPITypes = {
     data: { userId: number }
-    resultCode: ResultCodesEnum
+    resultCode: ResultCodesEnum | ResultCodesForCaptchaEnum
     messages: Array<string>
 }
 

@@ -10,7 +10,7 @@ type PropsType = {
     portionSize?: number
 }
 
-export const Pagination: React.FC<PropsType> = ({totalUsersCount, pageSize, currentPage, onPageChanged, portionSize = 20}) => {
+export const Pagination: React.FC<PropsType> = ({totalUsersCount, pageSize, currentPage, onPageChanged, portionSize = 10}) => {
     let pagesCount = Math.ceil(totalUsersCount / pageSize / 50);
     const pages: Array<number> = [];
 
@@ -24,32 +24,36 @@ export const Pagination: React.FC<PropsType> = ({totalUsersCount, pageSize, curr
     let rightPortionPageNumber = currentPortionNumber * portionSize;
 
     return (
-        <div>
-            {    currentPortionNumber > 1 &&
-                <button 
-                    /* disabled={currentPortionNumber === 1} */
-                    onClick={()=> setCurrentPortionNumber(currentPortionNumber - 1)}
-                >prev</button>
-            }
+        <div className={styles.Pagination__container}>
+            <div className={styles.Pagination}>
+                {    currentPortionNumber > 1 &&
+                    <button 
+                        className={styles.button__prev}
+                        // disabled={currentPortionNumber === 1}
+                        onClick={()=> setCurrentPortionNumber(currentPortionNumber - 1)}
+                    >prev</button>
+                }
 
-            { 
-                pages
-                .filter(page => page >= leftPortionPageNumber && page <= rightPortionPageNumber)
-                .map(p => {
-                    return <span
-                        key={p}
-                        className={ cn({[styles.selectedPage]: currentPage === p}, styles.pageNumber) }
-                        onClick={() => onPageChanged(p)}
-                        style={{'cursor': 'pointer'}}
-                    >{p}</span>
-                }) 
-            }
-            {    portionCount > currentPortionNumber  &&
-                <button 
-                    /* disabled={portionCount === currentPortionNumber } */
-                    onClick={()=> setCurrentPortionNumber(currentPortionNumber + 1)}
-                >next</button>
-            }
-        </div> 
+                { 
+                    pages
+                    .filter(page => page >= leftPortionPageNumber && page <= rightPortionPageNumber)
+                    .map(p => {
+                        return <span
+                            key={p}
+                            className={ cn({[styles.selectedPage]: currentPage === p}, styles.pageNumber) }
+                            onClick={() => onPageChanged(p)}
+                            style={{'cursor': 'pointer'}}
+                        >{p}</span>
+                    }) 
+                }
+                {    portionCount > currentPortionNumber  &&
+                    <button 
+                        className={styles.button__next}
+                        /* disabled={portionCount === currentPortionNumber } */
+                        onClick={()=> setCurrentPortionNumber(currentPortionNumber + 1)}
+                    >next</button>
+                }
+            </div> 
+        </div>
     )
 }

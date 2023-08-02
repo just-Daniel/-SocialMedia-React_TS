@@ -76,31 +76,37 @@ type FollowActionType = {
     userId: number
 }
 export const followAC = (userId: number): FollowActionType => ( {type: FOLLOW, userId} );
+
 type UnfollowActionType = {
     type: typeof UNFOLLOW
     userId: number
 }
 export const unfollowAC = (userId: number): UnfollowActionType => ( { type: UNFOLLOW, userId } );
+
 type SetUsersActionType = {
     type: typeof SET_USERS
     users: Array<UserType>
 }
 export const setUsersAC = (users: Array<UserType>): SetUsersActionType => ({ type: SET_USERS, users});
+
 type SetCurrentPagedActionType = {
     type: typeof SET_CURRENT_PAGE
     currentPage: number
 }
 export const setCurrentPageAC = (currentPage: number): SetCurrentPagedActionType => ({type: SET_CURRENT_PAGE, currentPage});
+
 type SetTotalUsersCountActionType = {
     type: typeof SET_TOTAL_USERS_COUNT
     totalUsersCount: number
 }
-export const setTotalUsersCountAC = (totalUsersCount: number): SetTotalUsersCountActionType => ({type: SET_TOTAL_USERS_COUNT, totalUsersCount})
+export const setTotalUsersCountAC = (totalUsersCount: number): SetTotalUsersCountActionType => ({type: SET_TOTAL_USERS_COUNT, totalUsersCount});
+
 type ToggleIsFetchingActionType = {
     type: typeof TOGGLE_IS_FETCHING
     isFetching: boolean
 }
 export const toggleIsFetchingAC = (isFetching: boolean): ToggleIsFetchingActionType => ({type: TOGGLE_IS_FETCHING, isFetching});
+
 type ToggleIsFollowingProgressActionType = {
     type: typeof TOGGLE_IS_FOLLOWING_PROGRESS
     isFetching: boolean

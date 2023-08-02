@@ -51,7 +51,7 @@ class UsersContainer extends React.Component<PropsType> {
     }
 };
 
-const mapStateToProps = (state: AppStateType) => {
+const mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
         users: getUsers(state),
         pageSize: getPageSize(state),
@@ -61,30 +61,6 @@ const mapStateToProps = (state: AppStateType) => {
         followingInProgress: getFollowingInProgress(state)
     }
 };
-
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         follow: (userId) => {
-//             dispatch(followAC(userId));
-//         },
-//         unfollow: (userId) => {
-//             dispatch(unfollowAC(userId));
-//         },
-//         setUsers: (users) => {
-//             dispatch(setUsersAC(users));
-//         },
-//         setCurrentPage: (currentPage) => {
-//             dispatch(setCurrentPageAC(currentPage))
-//         },
-//         setTotalUsersCount: (usersCount) => {
-//             dispatch(setTotalUsersCountAC(usersCount))
-//         },
-//         toggleIsFetching: (isFetching) => {
-//             dispatch(toggleIsFetchingAC(isFetching))
-//         }
-//     }
-// };
-//  ---  OR ---
 
 const mapDispatchToProps = {
     getUsers: getUsersThunkCreator,

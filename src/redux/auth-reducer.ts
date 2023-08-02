@@ -1,4 +1,4 @@
-import { ResultCodesEnum } from './../api/api';
+import { ResultCodesEnum, ResultCodesForCaptchaEnum } from './../api/api';
 import { FormAction, stopSubmit } from "redux-form";
 import { ThunkAction } from "redux-thunk";
 import { securityAPI, authAPI } from "../api/api";
@@ -80,7 +80,7 @@ export const login = (email: string, password: string, rememberMe: boolean, capt
     if (res.resultCode === ResultCodesEnum.Success) {
         dispatch(authUser());
     } else  {
-        if (res.resultCode === ResultCodesEnum.CaptchaIsRequired) {
+        if (res.resultCode === ResultCodesForCaptchaEnum.CaptchaIsRequired) {
             dispatch(getCaptchaUrl());
         } 
 
